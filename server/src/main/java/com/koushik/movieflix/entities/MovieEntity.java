@@ -3,6 +3,7 @@ package com.koushik.movieflix.entities;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Koushik
@@ -30,31 +32,56 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 })
 public class MovieEntity {
 	@Id
+	@JsonProperty("TitleId")
 	private String id;
+	@JsonProperty("Title")
 	private String title;
+	@JsonProperty("Year")
 	private String year;
+	@JsonProperty("Rated")
 	private String rated;
+	@JsonProperty("Released")
 	private String released;
+	@JsonProperty("Runtime")
 	private String runtime;
+	@JsonProperty("Gere")
 	private String genre;
+	@JsonProperty("Director")
 	private String director;
+	@JsonProperty("Writer")
 	private String writer;
+	@JsonProperty("Actors")
 	private String actors;
+	@JsonProperty("Plot")
 	private String plot;
+	@JsonProperty("Language")
 	private String language;
+	@JsonProperty("Country")
 	private String country;
+	@JsonProperty("Awards")
 	private String awards;
+	@JsonProperty("Poster")
 	private String poster;
+	@JsonProperty("Metascore")
 	private String metascore;
+	@JsonProperty("ImdbRating")
 	private float imdbrating;
+	@JsonProperty("ImdbVotes")
 	private int imdbvotes;
+	@JsonProperty("ImdbID")
 	private String imdbid;
+	@JsonProperty("Type")
 	private String type;
+	@JsonProperty("AvgRating")
 	private double avgRating;
 	
-	@OneToMany(mappedBy="movieEntity",fetch=FetchType.EAGER,orphanRemoval=true)
+	@OneToMany(mappedBy="movieEntity",fetch=FetchType.EAGER,orphanRemoval=true,cascade=CascadeType.REMOVE)
 	@JsonManagedReference
+	@JsonProperty("Comments")
 	private List<CommentEntity> commentEntity;
+	
+	@OneToMany(mappedBy="movie",orphanRemoval=true,cascade=CascadeType.DETACH)
+	private List<RatingEntity> ratingEntities; 
 		
 	public List<CommentEntity> getCommentEntity() {
 		return commentEntity;
@@ -71,7 +98,7 @@ public class MovieEntity {
 	public String getId() {
 		return id;
 	}
-
+    
 	public void setId(String id) {
 		this.id = id;
 	}
