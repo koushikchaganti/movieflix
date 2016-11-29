@@ -3,6 +3,7 @@ package com.koushik.movieflix.entities;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Koushik
@@ -28,11 +30,14 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 })
 public class CommentEntity {
 	@Id
+	@JsonProperty("CommentId")
 	private String id;
+	@JsonProperty("Comment")
+	@Column(length=5000)
 	private String comment;
 	@ManyToOne(cascade=CascadeType.DETACH)
 	private User user;
-	@ManyToOne(targetEntity=MovieEntity.class,cascade=CascadeType.REMOVE)
+	@ManyToOne(targetEntity=MovieEntity.class,cascade=CascadeType.DETACH)
 	@JoinColumn(name="MovieEntity_ID", referencedColumnName="id")
 	@JsonBackReference
 	private MovieEntity movieEntity;
@@ -77,7 +82,6 @@ public class CommentEntity {
 	public String toString() {
 		return "CommentEntity [id=" + id + ", comment=" + comment + ", user=" + user + ", movieEntity=" + movieEntity
 				+ "]";
-	}
-		
+	}		
 		
 }
