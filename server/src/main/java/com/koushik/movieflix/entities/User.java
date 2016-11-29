@@ -1,12 +1,15 @@
 package com.koushik.movieflix.entities;
 
+import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -26,8 +29,11 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 })
 public class User {
 	@Id
+	@JsonProperty("UserId")
 	private String id;
+	@JsonProperty("FirstName")
 	private String firstName;
+	@JsonProperty("LastName")
 	private String lastName;
 	@Column(unique=true)
 	@JsonProperty(access=Access.WRITE_ONLY)
@@ -36,7 +42,13 @@ public class User {
 	private String password;
 	
 	private String role;
-		
+	
+	@OneToMany(mappedBy="user",orphanRemoval=true,cascade=CascadeType.REMOVE)
+	private List<CommentEntity> commentEntities; 
+	
+	@OneToMany(mappedBy="user",orphanRemoval=true,cascade=CascadeType.REMOVE)
+	private List<RatingEntity> ratingEntities; 
+	
 	public User() {
 		this.id = UUID.randomUUID().toString();
 		this.role="User";
