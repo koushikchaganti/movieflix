@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table
 @EnableTransactionManagement
@@ -21,11 +23,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 })
 public class RatingEntity {
 	@Id
+	@JsonProperty("RatingId")
 	private String id;
 	
+	@JsonProperty("Rating")
 	private double rating;
 	
-	@ManyToOne(targetEntity=User.class,cascade=CascadeType.REMOVE)
+	@ManyToOne(targetEntity=User.class,cascade=CascadeType.DETACH)
 	@JoinColumn(name="USER_ID", referencedColumnName="id")
 	private User user;
 	
