@@ -45,7 +45,7 @@ Movieflix Web Application has been designed to stream HD movies online and it ha
    **`http://localhost:9093/movieflix/api/titles/{id}`**   
 
 10. URI to filter by IMDB Votes
-	  **`http://localhost:9093/movieflix/api/titles/imdbvotes`**
+   **`http://localhost:9093/movieflix/api/titles/imdbvotes`**
 
 11. URI to filter by IMDB Rating
     **`http://localhost:9093/movieflix/api/titles/imdbrating`**
@@ -54,23 +54,25 @@ Movieflix Web Application has been designed to stream HD movies online and it ha
     **`http://localhost:9093/movieflix/api//ratings/user/{uid}/title/{mid}`**	
 	
 13. URI to Comment a Title
-	**`http://localhost:9093/movieflix/api/comments/user/{uid}/title/{mid}`**
+    **`http://localhost:9093/movieflix/api/comments/user/{uid}/title/{mid}`**
 
 14. URI to Signup an User
-	**`http://localhost:9093/movieflix/api/users`**
+    **`http://localhost:9093/movieflix/api/users`**
 
 15. URI to Update an User
-	**`http://localhost:9093/movieflix/api/users/{id}`**	
+    **`http://localhost:9093/movieflix/api/users/{id}`**
 
+16. URI to Delete an User
+    **`http://localhost:9093/movieflix/api/users/{id}`**
 
 ## ADMIN OPERATIONS	
 
-16. URI to add new Title
-	  **`http://localhost:9093/movieflix/api/admin/titles`**
+17. URI to add new Title
+    **`http://localhost:9093/movieflix/api/admin/titles`**
 	
-17. URI to Edit existing Title	
-	  **`http://localhost:9093/movieflix/api/admin/titles/{id}`**
+18. URI to Edit existing Title	
+    **`http://localhost:9093/movieflix/api/admin/titles/{id}`**
 
-18. URI to Delete Title 
-	  **`http://localhost:9093/movieflix/api/admin/titles/{id}`**	
+19. URI to Delete Title 
+    **`http://localhost:9093/movieflix/api/admin/titles/{id}`**	
 	
