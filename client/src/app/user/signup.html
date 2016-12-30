@@ -6,7 +6,7 @@
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input type="text" name="firstName" class="form-control" placeholder="First Name" ng-model="siup.user.FirstName" id="firstName" required>
-                    <div ng-messages="signUp.firstName.$error" ng-if="signUp.firstName.$dirty">
+                    <div ng-messages="signUp.firstName.$error" ng-if="signUp.firstName.$dirty || signUp.firstName.$touched">
                         <div class="help-block" ng-message="required">First Name Required</div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-success btn-block" type="submit" ng-click="siup.addUser(siup.user)">Sign Up</button>
+                    <button class="btn btn-success btn-block" type="submit" ng-click="siup.addUser(siup.user)" ng-disabled="signUp.firstName.$invalid">Sign Up</button>
                 </div>
             </form>
         </div>

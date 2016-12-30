@@ -7,8 +7,8 @@
     angular.module('movieflix')
         .controller('MovieController', MovieController)
 
-    MovieController.$inject = ['MovieService'];
-    function MovieController(MovieService) {
+    MovieController.$inject = ['MovieService','$location'];
+    function MovieController(MovieService,$location) {
         var mVm = this;
 
         mVm.pageSize = 18;

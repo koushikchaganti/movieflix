@@ -3,5 +3,5 @@
  */
 (function () {
     'use strict';
-    angular.module('movieflix',['ngRoute','ngMessages','ui.bootstrap']);
+    angular.module('movieflix',['ui.router','ngMessages','ui.bootstrap','ngCookies']);
 })();

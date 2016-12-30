@@ -13,7 +13,7 @@
         this.registerUser = function (user) {
 
             var signUpConfig = {
-                url:CONFIG.API_HOST+'/users',
+                url:CONFIG.API_HOST+'/signup',
                 method:'POST',
                 data:user
             }

@@ -10,8 +10,8 @@
     SeriesController.$inject = ['SeriesService'];
     function SeriesController(SeriesService) {
         var sVm = this;
-        this.pageSize = 18;
-        this.currentPage = 1;
+        sVm.pageSize = 18;
+        sVm.currentPage = 1;
         SeriesService.getSeries()
             .then(function (resp) {
                 sVm.series = resp;

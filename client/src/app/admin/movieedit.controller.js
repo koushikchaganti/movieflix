@@ -5,12 +5,12 @@
     angular.module('movieflix')
         .controller('EditController',EditController);
 
-    EditController.$inject = ['TitleService','$routeParams','MovieUpdateService'];
-    function EditController(TitleService,$routeParams,MovieUpdateService) {
+    EditController.$inject = ['TitleService','$stateParams','MovieUpdateService'];
+    function EditController(TitleService,$stateParams,MovieUpdateService) {
 
         var ectl = this;
 
-        TitleService.getTitle($routeParams.titleId)
+        TitleService.getTitle($stateParams.titleId)
             .then(function (resp) {
                 ectl.title = resp;
             },function (err) {

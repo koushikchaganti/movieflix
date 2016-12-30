@@ -9,13 +9,12 @@
 
     MovieService.$inject = ['$http','CONFIG'];
     function MovieService($http,CONFIG) {
-
         this.getMovies = function () {
 
             var config = {
-
                 method:'GET',
-                url:CONFIG.API_HOST+'/titles/type/movie'
+                url:CONFIG.API_HOST+'/titles/type/movie',
+                header:{'Authorization':'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3VzaGlrLmNoYWdhbnRpQGdtYWlsLmNvbSIsInJvbGVzIjoiVXNlciIsImV4cCI6MTQ4Mjk1MzEyOSwiaWF0IjoxNDgyOTUxMzI5fQ.420eDZsHQinUDZobNKT1V76APBXuJrWnEn06mVAHhaA'}
             }
             
             return $http(config).then(function (resp) {

@@ -41,26 +41,26 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li ng-class="{active: isActive('/home')}"><a ng-href="index.html#!/home">Home</a></li>
-                <li ng-class="{active: isActive('/movies')}"><a ng-href="index.html#!/movies">Movies</a></li>
-                <li ng-class="{active: isActive('/series')}"><a ng-href="index.html#!/series">Series</a></li>
-                <li ng-class="{active: isActive('/signup')}"><a ng-href="index.html#!/signup">SignUp</a></li>
+                <li ng-class="{active: isActive('/home')}"><a ng-href="#!/home">Home</a></li>
+                <li ng-class="{active: isActive('/movies')}"><a ng-href="#!/movies">Movies</a></li>
+                <li ng-class="{active: isActive('/series')}"><a ng-href="#!/series">Series</a></li>
+                <li ng-class="{active: isActive('/signup')}"><a ui-sref="signup">SignUp</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Koushik Name
+                <li class="dropdown" ng-if="nav.firstName">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Account Info
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Your Account</a></li>
-                        <li><a href="#">Sign out</a></li>
+                        <li><a ng-click="nav.logout('lo')">Sign out</a></li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
 </nav>
-<ng-view></ng-view>
+<ui-view></ui-view>
+<!--<ng-view></ng-view>-->
 <div class="container-fluid"></div>
 <footer class="navbar navbar-fixed-bottom">
     <div class="container">
@@ -70,9 +70,12 @@
 <!-- bower:js -->
 <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/bootstrap/js/dropdown.js"></script>
 <script src="/bower_components/angular-messages/angular-messages.js"></script>
 <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="/bower_components/ngstorage/ngStorage.js"></script>
+<script src="/bower_components/angular-cookies/angular-cookies.js"></script>
 <!-- endinject -->
 
 <!-- vendor:js -->
@@ -80,24 +83,30 @@
 
 <!-- inject:js -->
 <script src="assets/js/jquery/3.1.1/jquery.min.js"></script>
-<script src="assets/js/ui-bootstrap-tpls-2.3.1.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
 <script src="app/app.module.js"></script>
 <script src="app/user/signup.controller.js"></script>
+<script src="app/user/login.controller.js"></script>
+<script src="app/movies/title.controller.js"></script>
+<script src="app/movies/series.controller.js"></script>
+<script src="app/movies/rating.controller.js"></script>
+<script src="app/movies/movies.controller.js"></script>
+<script src="app/movies/movie.filter.js"></script>
+<script src="app/movies/comment.controller.js"></script>
 <script src="app/services/update.service.js"></script>
 <script src="app/services/titles.service.js"></script>
 <script src="app/services/title.service.js"></script>
 <script src="app/services/SignUpService.js"></script>
 <script src="app/services/series.service.js"></script>
+<script src="app/services/RatingService.js"></script>
 <script src="app/services/movies.service.js"></script>
+<script src="app/services/login.service.js"></script>
 <script src="app/services/deletetitle.service.js"></script>
+<script src="app/services/comment.service.js"></script>
 <script src="app/services/addTitleService.js"></script>
-<script src="app/movies/title.controller.js"></script>
-<script src="app/movies/series.controller.js"></script>
-<script src="app/movies/movies.controller.js"></script>
-<script src="app/movies/movie.filter.js"></script>
 <script src="app/layout/navbar.controller.js"></script>
+<script src="assets/js/ui-bootstrap-tpls-2.3.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
 <script src="app/admin/movieedit.controller.js"></script>
 <script src="app/admin/adminhome.controller.js"></script>
 <script src="app/admin/addtitle.controller.js"></script>

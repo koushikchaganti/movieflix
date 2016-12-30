@@ -6,57 +6,71 @@
     angular.module('movieflix')
         .config(movieConfig);
 
-    movieConfig.$inject = ['$routeProvider', '$locationProvider'];
-    function movieConfig($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/home', {
-                templateUrl: 'app/movies/homepage.html'
+    movieConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+    function movieConfig($stateProvider, $urlRouteProvider, $locationProvider) {
+        // $locationProvider.html5Mode(true).hashPrefix('!');
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: 'app/movies/homepage.html',
+                data: {
+                    authRequired: true
+                }
             })
-            .when('/movies', {
+            .state('movies', {
+                url: '/movies',
                 templateUrl: 'app/movies/movieslist.html',
                 controller: 'MovieController',
                 controllerAs: 'mVm'
             })
-            .when('/movies/:titleId', {
-                templateUrl: 'app/movies/title.html',
-                controller: 'TitleDetails',
-                controllerAs: 'title'
-            })
-            .when('/series', {
+            .state('series', {
+                url: '/series',
                 templateUrl: 'app/movies/series.html',
                 controller: 'SeriesController',
                 controllerAs: 'sVm'
             })
-            .when('/series/:titleId', {
+            .state('SeriesTitleDetails', {
+                url: '/series/:titleId',
                 templateUrl: 'app/movies/title.html',
                 controller: 'TitleDetails',
                 controllerAs: 'title'
             })
-            .when('/signup', {
+            .state('MoviesTitleDetails', {
+                url: '/movies/:titleId',
+                templateUrl: 'app/movies/title.html',
+                controller: 'TitleDetails',
+                controllerAs: 'title'
+            })
+            .state('signup', {
+                url: '/signup',
                 templateUrl: 'app/user/signup.html',
                 controller: 'SignUp',
                 controllerAs: 'siup'
             })
-            .when('/admin', {
+            .state('admin', {
+                url: '/admin',
                 templateUrl: 'app/admin/home.html',
                 controller: 'AdminController',
                 controllerAs: 'actl'
             })
-            .when('/edit/:titleId', {
+            .state('edit', {
+                url: '/edit/:titleId',
                 templateUrl: 'app/admin/edittitle.html',
                 controller: 'EditController',
                 controllerAs: 'ectl'
             })
-            .when('/add', {
+            .state('add', {
+                url: '/add',
                 templateUrl: 'app/admin/addtitle.html',
                 controller: 'AddTitleController',
                 controllerAs: 'actl'
             })
-            .otherwise({
-                redirectTo: '/home'
+            .state('login', {
+                url: '/login',
+                templateUrl: 'app/user/signin.html',
+                controller: 'LoginController',
+                controllerAs: 'lctl'
             });
-        $locationProvider.html5Mode(false).hashPrefix('!');
-
+        $urlRouteProvider.otherwise('/home');
     }
-
 })();
